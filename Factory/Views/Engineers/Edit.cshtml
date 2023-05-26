@@ -12,9 +12,17 @@
 {
     @Html.HiddenFor(model => model.EngineerId)
 
-    @Html.LabelFor(model => model.EngineerName)
+    @Html.LabelFor(model => model.EngineerName, "Engineer Name: ")
     @Html.EditorFor(model => model.EngineerName)
-
+    <br>
+    @Html.LabelFor(model => model.EngineerStatus, "Engineer Status: ")
+    @Html.DropDownListFor(model => model.EngineerStatus, new SelectList(new[]
+    {
+      new { Value = "Assigned to Machine", Text = "Assigned to Machine" },
+      new { Value = "Idle", Text = "Idle" },
+      new { Value = "Out of Office", Text = "Out of Office" }
+    }, "Value", "Text"), "Select status")
+    <br>
     <input type="submit" value="Save" />
 }
 <p>@Html.ActionLink("Back to list", "Index")</p>

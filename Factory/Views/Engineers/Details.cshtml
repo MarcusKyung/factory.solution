@@ -19,7 +19,7 @@ else
   <ul>
     @foreach(EngineerMachine join in Model.JoinEntities)
     {
-      <li>Machine: @join.Machine.MachineName</li>
+      <li>Machine: @join.Machine.MachineName | @join.Machine.MachineStatus</li>
       @using (Html.BeginForm("DeleteJoin", "Engineers"))
       {
         @Html.Hidden("engineerId", Model.EngineerId)

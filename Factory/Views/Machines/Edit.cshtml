@@ -11,11 +11,18 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.MachineId)
-
+    
     @Html.LabelFor(model => model.MachineName)
     @Html.EditorFor(model => model.MachineName)
-  
-
+    <br>
+    @Html.LabelFor(model => model.MachineStatus, "Machine Status: ")
+    @Html.DropDownListFor(model => model.MachineStatus, new SelectList(new[]
+    {
+      new { Value = "Broken", Text = "Broken" },
+      new { Value = "Under Repair", Text = "Under Repair" },
+      new { Value = "Fully Functional", Text = "Fully Functional" }
+    }, "Value", "Text"), "Select status")
+    <br>
     <input type="submit" value="Save" />
 }
 <p>@Html.ActionLink("Back to list", "Index")</p>

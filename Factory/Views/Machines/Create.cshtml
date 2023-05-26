@@ -5,6 +5,7 @@
 @model Factory.Models.Machine
 
 <p>@Html.ValidationMessageFor(model => model.MachineName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.MachineStatus, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 <h4>Add a new machine</h4>
 
@@ -12,6 +13,13 @@
 {
   @Html.LabelFor(model => model.MachineName, "Machine Name")
   @Html.TextBoxFor(model => model.MachineName)
+  @Html.LabelFor(model => model.MachineStatus, "Machine Status")
+  @Html.DropDownListFor(model => model.MachineStatus, new SelectList(new[]
+  {
+    new { Value = "Broken", Text = "Broken" },
+    new { Value = "Under Repair", Text = "Under Repair" },
+    new { Value = "Fully Functional", Text = "Fully Functional" }
+  }, "Value", "Text"), "Select status")
   <input type="submit" value="Add new Machine" class="btn btn-primary"/>
 }
 <p>@Html.ActionLink("Show all machines", "Index")</p>
