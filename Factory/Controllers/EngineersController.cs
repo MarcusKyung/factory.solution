@@ -82,7 +82,7 @@ namespace Factory.Controllers
     public ActionResult AddMachine(int id)
     {
       Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
-      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      ViewBag.EngineerId = new SelectList(_db.Machines, "MachineId", "MachineName");
       return View(thisEngineer);
     }
 
@@ -98,6 +98,43 @@ namespace Factory.Controllers
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new {id = engineer.EngineerId});
+    }
+
+    [HttpPost]
+    public ActionResult DeleteJoin(int engineerId, int joinId)
+    {
+      EngineerMachine joinEntry = _db.EngineerMachines.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.EngineerMachines.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Details", new {id = engineerId});
+    }
+
+    public ActionResult Search()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Results(string engineerName)
+    {
+      Engineer thisEngineer = _db.Engineers
+                              .Include(engineer => engineer.JoinEntities)
+                              .ThenInclude(join => join.Machine)
+                              .FirstOrDefault(engineer => engineer.EngineerName == engineerName);
+
+      if (thisEngineer != null)
+      {
+          return View(thisEngineer);
+      }
+      else
+      {
+          return RedirectToAction("NoResults");
+      }
+    }
+
+    public ActionResult NoResults()
+    {
+      return View();
     }
   }
 }
