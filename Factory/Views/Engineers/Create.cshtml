@@ -4,7 +4,7 @@
 
 @model Factory.Models.Engineer
 <hr>
-<h4>Add a new engineer</h4>
+<h4>Add a new Engineer</h4>
 <hr>
 <p>@Html.ValidationMessageFor(model => model.EngineerName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.EngineerStatus, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
@@ -13,13 +13,16 @@
 {
   @Html.LabelFor(model => model.EngineerName, "Engineer Name")
   @Html.TextBoxFor(model => model.EngineerName)
+  <br>
+  @Html.LabelFor(model => model.EngineerStatus, "Engineer Status")
   @Html.DropDownListFor(model => model.EngineerStatus, new SelectList(new[]
   {
-    new { Value = "Assigned to Machine", Text = "Assigned to Machine" },
+    new { Value = "Assigned to Repair", Text = "Assigned to Repair" },
     new { Value = "Idle", Text = "Idle" },
     new { Value = "Out of Office", Text = "Out of Office" }
   }, "Value", "Text"), "Select status")
-
-  <input type="submit" value="Add new Engineer" class="btn btn-primary"/>
+  <br>
+  <input type="submit" value="Add new Engineer" class="btn btn-warning"/>
 }
-<p>@Html.ActionLink("Show all engineers", "Index")</p>
+<br>
+<p>@Html.ActionLink("Show all Engineers", "Index")</p>
