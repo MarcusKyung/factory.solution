@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Factory.Controllers
 {
   public class MachinesController : Controller
@@ -21,6 +20,27 @@ namespace Factory.Controllers
     {
       List<Machine> model = _db.Machines.OrderBy(machine => machine.MachineName).ToList();
       return View(model);
+    }
+
+    public ActionResult Create()
+    {  
+      return View();
+    }
+
+
+    [HttpPost]
+    public ActionResult Create(Machine machine)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(machine);
+      }
+      else
+      {
+      _db.Machines.Add(machine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+      }
     }
   }
 }
