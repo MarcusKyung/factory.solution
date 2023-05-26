@@ -8,31 +8,32 @@
 <hr>
 <h2>Machine Details</h2>
 <hr>
-
-<h3>@Html.DisplayNameFor(model => model.MachineName): @Html.DisplayFor(model => model.MachineName)<h3>
-
-@if(@Model.JoinEntities.Count == 0)
-{
-  <p>This machine does not have any engineers added yet!</p>
-}
-else
-{
-  <h4>This machine is serviced by the following Engineers:</h4>
-  <ul>
-    @foreach(EngineerMachine join in Model.JoinEntities)
+<div class="card">
+  <div class="card-body">
+  <h3>Machine Name: @Html.DisplayFor(model => model.MachineName)<h3>
+    @if(@Model.JoinEntities.Count == 0)
     {
-      <li>Engineer: @join.Engineer.EngineerName | @join.Engineer.EngineerStatus</li>
-      @using (Html.BeginForm("DeleteJoin", "Machine"))
-      {
-        @Html.Hidden("machineId", Model.MachineId)
-        @Html.Hidden("joinId", @join.EngineerMachineId)
-        <input type="submit" value="Delete"/>
-      }
+      <p>This machine does not have any licensed engineers added yet!</p>
     }
-  </ul>
-}
-
-<p>@Html.ActionLink("Edit machine", "Edit", new { id = Model.MachineId })</p>
-<p>@Html.ActionLink("Delete machine", "Delete", new { id = Model.MachineId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+    else
+    {
+      <h6>This machine is serviced by the following licensed engineers:</h6>
+      <ul>
+        @foreach(EngineerMachine join in Model.JoinEntities)
+        {
+          <li>Engineer: @join.Engineer.EngineerName | @join.Engineer.EngineerStatus</li>
+          @using (Html.BeginForm("DeleteJoin", "Machine"))
+          {
+            @Html.Hidden("machineId", Model.MachineId)
+            @Html.Hidden("joinId", @join.EngineerMachineId)
+            <input type="submit" value="Delete"/>
+          }
+        }
+      </ul>
+    }
+  </div>
+</div>
+<p>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Add a Engineer", "AddEngineer", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>

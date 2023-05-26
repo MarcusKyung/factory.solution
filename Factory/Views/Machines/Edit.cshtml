@@ -6,23 +6,27 @@
 <hr>
 <h2>Edit</h2>
 <hr>
-<h4>Edit this machine: @Html.DisplayFor(model => model.MachineName)</h4>
+<div class="card">
+  <div class="card-body">
+    <h4>Edit this Machine: @Html.DisplayFor(model => model.MachineName)</h4>
 
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.MachineId)
-
-    @Html.LabelFor(model => model.MachineName)
-    @Html.EditorFor(model => model.MachineName)
-    <br>
-    @Html.LabelFor(model => model.MachineStatus, "Machine Status: ")
-    @Html.DropDownListFor(model => model.MachineStatus, new SelectList(new[]
+    @using (Html.BeginForm())
     {
-      new { Value = "Broken", Text = "Broken" },
-      new { Value = "Under Repair", Text = "Under Repair" },
-      new { Value = "Fully Functional", Text = "Fully Functional" }
-    }, "Value", "Text"), "Select status")
-    <br>
-    <input type="submit" value="Save" />
-}
+      @Html.HiddenFor(model => model.MachineId)
+
+      @Html.LabelFor(model => model.MachineName, "Machine Name: ")
+      @Html.EditorFor(model => model.MachineName)
+      <br>
+      @Html.LabelFor(model => model.MachineStatus, "Machine Status: ")
+      @Html.DropDownListFor(model => model.MachineStatus, new SelectList(new[]
+      {
+        new { Value = "Broken", Text = "Broken" },
+        new { Value = "Under Repair", Text = "Under Repair" },
+        new { Value = "Fully Functional", Text = "Fully Functional" }
+      }, "Value", "Text"), "Select status")
+      <br>
+      <input type="submit" value="Save" class="btn btn-warning"/>
+    }
+  </div>
+</div>
 <p>@Html.ActionLink("Back to list", "Index")</p>

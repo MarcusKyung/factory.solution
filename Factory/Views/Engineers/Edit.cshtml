@@ -6,23 +6,27 @@
 <hr>
 <h2>Edit</h2>
 <hr>
-<h4>Edit this Engineer: @Html.DisplayFor(model => model.EngineerName)</h4>
+<div class="card">
+  <div class="card-body">
+    <h4>Edit this Engineer: @Html.DisplayFor(model => model.EngineerName)</h4>
 
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.EngineerId)
-
-    @Html.LabelFor(model => model.EngineerName, "Engineer Name: ")
-    @Html.EditorFor(model => model.EngineerName)
-    <br>
-    @Html.LabelFor(model => model.EngineerStatus, "Engineer Status: ")
-    @Html.DropDownListFor(model => model.EngineerStatus, new SelectList(new[]
+    @using (Html.BeginForm())
     {
-      new { Value = "Assigned to Machine", Text = "Assigned to Machine" },
-      new { Value = "Idle", Text = "Idle" },
-      new { Value = "Out of Office", Text = "Out of Office" }
-    }, "Value", "Text"), "Select status")
-    <br>
-    <input type="submit" value="Save" />
-}
+      @Html.HiddenFor(model => model.EngineerId)
+
+      @Html.LabelFor(model => model.EngineerName, "Engineer Name: ")
+      @Html.EditorFor(model => model.EngineerName)
+      <br>
+      @Html.LabelFor(model => model.EngineerStatus, "Engineer Status: ")
+      @Html.DropDownListFor(model => model.EngineerStatus, new SelectList(new[]
+      {
+        new { Value = "Assigned to Machine", Text = "Assigned to Machine" },
+        new { Value = "Idle", Text = "Idle" },
+        new { Value = "Out of Office", Text = "Out of Office" }
+      }, "Value", "Text"), "Select status")
+      <br>
+      <input type="submit" value="Save" class="btn btn-warning"/>
+    }
+  </div>
+</div>
 <p>@Html.ActionLink("Back to list", "Index")</p>
