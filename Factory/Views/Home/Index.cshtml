@@ -3,22 +3,22 @@
 }
 
 @using Factory.Models;
-
-<h1>TITLE</h1>
-
+<hr>
+<h1>Machine and Engineer Management System:</h1>
+<hr>
 <div class="row">
     <div class="col-md-6">
         <div class="card custom-card">
             <div class="card-body">
-                <h4>Machines</h4>
+                <h4>Machine | Machine Status</h4>
                 @if (Model["machines"].Length == 0)
                 {
-                    <p>No machines have been added yet!</p>
+                    <p>No machines added to system. <a href="/machines/create">Add one here</a></p>
                 }
                 <ul>
                     @foreach (Machine machine in Model["machines"])
                     {
-                        <li>@Html.ActionLink(@machine.MachineName, "Details", "Machines", new { id = @machine.MachineId })</li>
+                        <li>@Html.ActionLink(@machine.MachineName + " | " + machine.MachineStatus, "Details", "Machines", new { id = @machine.MachineId })</li>
                     }
                 </ul>
             </div>
@@ -27,15 +27,15 @@
     <div class="col-md-6">
         <div class="card custom-card">
             <div class="card-body">
-                <h4>Engineers</h4>
+                <h4>Engineer | Engineer Status</h4>
                 @if (Model["engineers"].Length == 0)
                 {
-                    <p>No engineers have been added yet!</p>
+                    <p>No engineers added to system. <a href="/engineers/create">Add one here</a></p>
                 }
                 <ul>
                     @foreach (Engineer engineer in Model["engineers"])
                     {
-                        <li>@Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId })</li>
+                        <li>@Html.ActionLink(@engineer.EngineerName + " | " + engineer.EngineerStatus, "Details", "Engineers", new { id = @engineer.EngineerId })</li>
                     }
                 </ul>
             </div>

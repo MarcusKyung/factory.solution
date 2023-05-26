@@ -3,8 +3,9 @@
 }
 
 @model Factory.Models.Engineer
-
+<hr>
 <h4>Search Engineers</h4>
+<hr>
 @using (Html.BeginForm("Results", "Engineers", FormMethod.Post))
 {
   @Html.LabelFor(model => model.EngineerName)

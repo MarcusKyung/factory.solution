@@ -3,15 +3,15 @@
 }
 
 @model Factory.Models.Machine
-
+<hr>
 <h2>Edit</h2>
-
+<hr>
 <h4>Edit this machine: @Html.DisplayFor(model => model.MachineName)</h4>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.MachineId)
-    
+
     @Html.LabelFor(model => model.MachineName)
     @Html.EditorFor(model => model.MachineName)
     <br>
