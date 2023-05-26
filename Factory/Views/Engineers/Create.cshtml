@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<p>@Html.ValidationMessageFor(model => model.EngineerName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+<h4>Add a new engineer</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.EngineerName, "Engineer Name")
+  @Html.TextBoxFor(model => model.EngineerName)
+  <input type="submit" value="Add new Engineer" class="btn btn-primary"/>
+}
+<p>@Html.ActionLink("Show all cuisines", "Index")</p>

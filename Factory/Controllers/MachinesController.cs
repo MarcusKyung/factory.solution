@@ -27,7 +27,6 @@ namespace Factory.Controllers
       return View();
     }
 
-
     [HttpPost]
     public ActionResult Create(Machine machine)
     {
