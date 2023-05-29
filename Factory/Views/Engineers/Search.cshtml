@@ -8,11 +8,12 @@
 <hr>
 @using (Html.BeginForm("Results", "Engineers", FormMethod.Post))
 {
-  @Html.LabelFor(model => model.EngineerName)
+  @Html.LabelFor(model => model.EngineerName, "Engineer Name")
   @Html.TextBoxFor(model => model.EngineerName)
 
-  <input type="submit" value="Search engineer" class="btn btn-warning"/>
+  <input type="submit" value="Search Engineers" class="btn btn-warning"/>
 }
-<p>@Html.ActionLink("Add new engineer", "Create")</p>
+
+<p>@Html.ActionLink("Add new Engineer", "Create")</p>
 <p>@Html.ActionLink("Add new Machine", "Create", "Machines")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

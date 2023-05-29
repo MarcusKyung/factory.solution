@@ -20,7 +20,7 @@ This EF Core C# Web application is designed to allow a plant manager to catalog 
 1. Clone this repo from GH to your local machine.
 2. In production directory of the file called Factory add a file titled ```appsettings.json```. Include this line of code ```{"ConnectionStrings": {"DefaultConnection":"Server=localhost;Port=3306;database=[YOUR_DATA_BASE_HERE];uid=[YOUR_USER_ID_HERE];pwd=[YOUR_PASSWORD_HERE];"}}```
 4. Update the ```appsettings.json``` file with your SQL details, replacing [YOUR_DATA_BASE_HERE], [YOUR_USER_ID_HERE], and [YOUR_PASSWORD_HERE]. 
-5. Using your device's terminal navigate to the Factory directory and use command ```dotnet ef database update``` generate a SQL database using the configuration outlined in the Migrations folder.
+5. Using your device's terminal navigate to the Factory directory and use command ```dotnet ef database update``` to generate a SQL database using the configuration outlined in the Migrations folder.
 6. Using your device's terminal navigate to the "Factory" production directory and use command ```dotnet restore``` to restore project dependencies.
 7. Using your device's terminal use command ```dotnet run``` to run this project in your device's browser. 
 8. In your browser window navigate to localhost:5001/ to view project.
