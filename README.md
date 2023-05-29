@@ -27,7 +27,7 @@ This EF Core C# Web application is designed to allow a plant manager to catalog 
 
 ## Known Bugs
 
-* _No known bugs as of 5/26/23._
+* _Navbar search not functional - 5/29/23_
 
 ## License
 
